@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Methods</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(65, 167, 153);
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentDate = new Date();
+            var today = currentDate.getDay();
+            console.log(today)
+            var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            document.getElementById("task1-btn").addEventListener("click", myFunction);
+            function myFunction() {
+                const currentDate = new Date();
+                const today = currentDate.getDay();
+                const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+                document.getElementById("task-1-p").innerText = "The time is: " + currentDate;
+                document.getElementById("task-2-p").innerText = "The day is: " + daysOfWeek[today];
+                document.getElementById("task-3-p").innerText = "The day is: " + daysOfWeek[today].slice(0, 3);
+            }
+
+            function myFunction1() {
+                try {
+                    if (today === 0 || today === 6 ) {
+                        alert("Its fun day");
+                    }
+                    else {
+                        alert("Its one of the working day! keep working and growing")
+                    }
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            }
+            document.getElementById("task2-btn").addEventListener("click", myFunction1);
+
+            function myFunction2() {
+                if (currentDate.getDate() < 16) {
+                    alert("today is one of the early day's of the month");
+                }
+                else {
+                    alert("its one of the month end days")
+                }
+            }
+            document.querySelector("#task3-btn").addEventListener("click", myFunction2)
+
+            function myFunction3() {
+                var nowTheTime = new Date()
+                if (currentDate.getHours() > 12) {
+                    console.log(nowTheTime);
+                    console.log(currentDate.getHours(currentDate));
+                    alert("its AM right now");
+                }
+                else {
+                    alert("its PM right now");
+                }
+            }
+            document.querySelector("#task4-btn").addEventListener("click", myFunction3)
+
+            function myFunction5() {
+                // given date information
+
+                var ramadan1st = new Date(2015 / 6 / 18);
+                var difference = currentDate - ramadan1st
+
+                // converting difference to days and hours:
+                var daysPassed = difference / (1000 * 60 * 60 * 24);
+                var hoursPassed = difference / (1000 * 60 * 60);
+                document.getElementById("task-5-p").innerHTML = "Total passed days since 1st ramadan: " + Math.round(daysPassed);
+                document.getElementById("task-5-1-p").innerHTML = "Total passed hours since 1st ramadan: " + Math.round(hoursPassed);
+            }
+            document.querySelector("#task5-btn").addEventListener("click", myFunction5)
+
+
+            function myFunction6() {
+                var referenceDate = new Date(2015 / 11 / 8)
+                var differenceOfTask6 = currentDate - referenceDate;
+                // Calculating seconds\
+                var secondsPassedSinceNow = differenceOfTask6 / 1000;
+                // console.log(Math.round(secondsPassedSinceNow))
+                document.getElementById("task-6-p").innerHTML = "The total Seconds passed since now from the refference date: " + secondsPassedSinceNow;
+            }
+            document.querySelector("#task6-btn").addEventListener("click", myFunction6)
+
+            function myFunction7() {
+                currentDate;
+                document.getElementById("task-7-p").innerHTML = "The current time: " + currentDate;
+                var task7Date = new Date()
+                var currentYear7 = task7Date.getFullYear();
+                console.log(currentYear7)
+                var currentMonth7 = task7Date.getMonth();
+                console.log(currentMonth7)
+                var currentDay7 = task7Date.getDay();
+                console.log(currentDay7)
+                var currentHours = task7Date.getHours() + 1;
+                var now = new Date(currentYear7, currentMonth7, currentDay7, currentHours);
+                document.getElementById("task-7-1-p").innerHTML = "The time 1 hour ahead from now: " + (now);
+            }
+            document.getElementById("task7-btn").addEventListener("click", myFunction7)
+
+            function myFunction8() {
+                var task8Date = new Date()
+                // get the time 100 years back
+                task8Date.setFullYear(task8Date.getFullYear() - 100)
+                // show the results
+                document.getElementById("task-8-p").innerHTML = new Date()
+                alert("100 years back from now it was: " + task8Date);
+            }
+            document.getElementById("task8-btn").addEventListener("click", myFunction8)
+
+            function myFunction9() {
+                // getting user age
+                var usersAge = parseInt(prompt("plase let us know your age"));
+                // finding the user birth year by subtracting user input from this year
+                var findingUserBirthYear = currentDate.getFullYear() - usersAge;;
+                document.getElementById("task-9-p").innerHTML = "Your birth year is: " + findingUserBirthYear;
+            }
+            document.getElementById("task9-btn").addEventListener("click", myFunction9)
+            
+            function myFunction10() {
+                var monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var userName = prompt("Enter your good name")
+                var usedUnits = parseInt(prompt("tell us how much units you have used?"));
+                var unitPrice = 20;
+                var dueDate = new Date();
+                var currrentMonth = dueDate.getMonth();
+                var nameOfMonth = monthsOfYear[currrentMonth];
+                var currentYear = dueDate.getFullYear();
+                var dueDateOfBill = new Date(currentYear, currrentMonth , 30);
+                var lateCharges = 500;
+                var PayableBillOnDue = usedUnits * unitPrice;
+                var payableBillOnLate = (usedUnits * unitPrice) + lateCharges;
+                
+                document.getElementById("task-10-p").innerHTML = "your total summary of Payable Bill based on your provided infromation:";
+                document.getElementById("task-10-1-p").innerHTML = "Name: " + userName;
+                document.getElementById("task-10-2-p").innerHTML = "Month: " + nameOfMonth;
+                document.getElementById("task-10-3-p").innerHTML = "Units Used by you: " + usedUnits;
+                document.getElementById("task-10-4-p").innerHTML = "Price per Unit: " + unitPrice;
+                document.getElementById("task-10-5-p").innerHTML = "Payable Amount on due: " + PayableBillOnDue;
+                document.getElementById("task-10-6-p").innerHTML = "Payable Amount After due: " + payableBillOnLate;
+ 
+                
+                }
+            document.getElementById("task10-btn").addEventListener("click", myFunction10)
+
+
+
+
+
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <h2>Task 1</h2>
+    <p>Write a progarame that writes current date, then prints day and then in third line prints first three words of
+        that day</p>
+    <button id="task1-btn">Click me to run the Task</button>
+    <p id="task-1-p"></p>
+    <p id="task-2-p"></p>
+    <p id="task-3-p"></p>
+
+    <h2>Task 2</h2>
+    <p>Write a programe that show the message "Its fun day" if the current day is sunday or sturday <br> and if the day
+        is oter than sun and sat sow the message "Its working day"</p>
+    <button id="task2-btn">Click me to run the Task</button>
+
+    <h2>Task 3</h2>
+    <p>Write a program that shows the message “First fifteen <br>
+        days of the month” if the date is less than 16th of the month <br>
+        else shows “Last days of the month”.</p>
+    <button id="task3-btn">Click me to run the Task</button>
+
+    <h2>Task 4</h2>
+    <p>Write a program that tests whether it's before noon and <br>
+        alert “Its AM” else “its PM”.</p>
+    <button id="task4-btn">Click me to run the Task</button>
+
+    <h2>Task 5</h2>
+    <p>Create a date object of the starting date of this Ramadan <br>
+        and alert the number of days past since 1st Ramadan? <br>
+        Note: 1st Ramadan was on June 18, 2015</p>
+    <button id="task5-btn">Click me to run the Task</button>
+    <p id="task-5-p"></p>
+    <p id="task-5-1-p"></p>
+    <h2>Task 6</h2>
+    <p>Write a program that displays in your browser the <br>
+        seconds that elapsed between the reference date and the <br>
+        beginning of 2015.</p>
+    <p id="task-6-p"></p>
+    <button id="task6-btn">Click me to run the Task</button>
+    <h2> Task 7</h2>
+    <p>Create a Date object for the current date and time. <br>
+        Extract the hours, reset the date object an hour ahead and <br>
+        finally display the date object in your browser.</p>
+    <p id="task-7-p"></p>
+    <p id="task-7-1-p"></p>
+    <button id="task7-btn">Click me to run the Task</button>
+
+    <h2>Task 8</h2>
+    <p>Write a program that creates a date object and show the <br>
+        date in an alert box that is reset to 100 years back?</p>
+    <p id="task-8-1-p"></p>
+    <p id="task-8-p"></p>
+    <button id="task8-btn">Click me to run the Task</button>
+
+    <h2>Task 9</h2>
+    <p>Write a program to ask the user about his age. <br> Calculate
+        and show his birth year in your browser.</p>
+    <p id="task-9-p"></p>
+    <button id="task9-btn">Click me to run the Task</button>
+    
+    <h2>Task 10</h2>
+    <p>Write a program to generate your K-Electric bill in your <br>
+        browser. All the amounts should be rounded off to 2 <br>
+        decimal places. Display the following fields: <br>
+        c. Number of units <br>
+        d. Charges per unit <br>
+        e. Net <br> Amount Payable (within Due Date) <br>
+        f. Late Pay <br>ment Surcharge <br>
+        g. Gross Amount Payable (after Due Date)</p>
+        
+        <p id="task-10-p"></p>
+        <p id="task-10-1-p"></p>
+        <p id="task-10-2-p"></p>
+        <p id="task-10-3-p"></p>
+        <p id="task-10-4-p"></p>
+        <p id="task-10-5-p"></p>
+        <p id="task-10-6-p"></p>
+        <p id="task-10-7-p"></p>
+        <p id="task-10-4-p"></p>
+        <!-- <p id="task-10-1-p"></p> -->
+        <button id="task10-btn">Click me to run the Task</button>
+        
+        
+        
+
+
+
+
+
+
+</body>
+
+</html>
